@@ -1,0 +1,6 @@
+{
+    "name": "itk-dev/beskedfordeler-symfony",
+    "description": "Beskedfordeler for Symfony",
+    "type": "symfony-bundle",
+    "license": "MIT"
+}

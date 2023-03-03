@@ -1,5 +1,8 @@
 # Beskedfordeler bundle
 
+See <https://digitaliseringskataloget.dk/integration/sf1461> for details on the
+Beskedfordeler.
+
 ## Installation
 
 Require the bundle:

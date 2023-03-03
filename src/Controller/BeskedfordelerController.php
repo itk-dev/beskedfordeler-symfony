@@ -16,6 +16,12 @@ class BeskedfordelerController implements ContainerAwareInterface
     use ContainerAwareTrait;
     use LoggerAwareTrait;
 
+    // @see https://digitaliseringskataloget.dk/integration/sf1461
+    //    » https://docs.kombit.dk/integration/sf1461/1.0/pakke
+    //    » Beskedfordeler-Besked-FåTilsendt-Snitflade.pdf
+    private const STATUS_KODE_OK = 20;
+    private const STATUS_KODE_ERROR = 40;
+
     public function __construct(LoggerInterface $logger)
     {
         $this->setLogger($logger);
@@ -43,11 +49,11 @@ class BeskedfordelerController implements ContainerAwareInterface
 
             // Report only our own exceptions.
             if ($throwable instanceof Exception) {
-                return $this->buildResponse(40, $throwable->getMessage());
+                return $this->buildResponse(self::STATUS_KODE_ERROR, $throwable->getMessage());
             }
         }
 
-        return $this->buildResponse(20);
+        return $this->buildResponse(self::STATUS_KODE_OK);
     }
 
     /**

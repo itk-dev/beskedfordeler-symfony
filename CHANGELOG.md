@@ -8,11 +8,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1]
+
+### Changed
+
+- Processed message only on `POST` request. Improved log messages.
+
 ## [1.0.0]
 
 ### Added
 
 - Added Beskedfordeler bundle
 
-[Unreleased]: https://github.com/itk-dev/beskedfordeler-symfony/1.0.0...HEAD
+[Unreleased]: https://github.com/itk-dev/beskedfordeler-symfony/compare/1.0.1...HEAD
+[1.0.1]: https://github.com/itk-dev/beskedfordeler-symfony/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/itk-dev/beskedfordeler-symfony/releases/tag/1.0.0

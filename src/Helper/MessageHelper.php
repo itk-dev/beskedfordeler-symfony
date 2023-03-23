@@ -53,7 +53,7 @@ final class MessageHelper
     {
         $document = new \DOMDocument();
         if (empty(trim($message)) || !@$document->loadXML($message)) {
-            throw new InvalidMessageException('Invalid XML');
+            throw new InvalidMessageException(sprintf('Invalid XML: %s', $message));
         }
 
         $eventType = $this->getEventType($type);

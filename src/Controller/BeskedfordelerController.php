@@ -35,15 +35,23 @@ class BeskedfordelerController implements ContainerAwareInterface
     public function postStatusBeskedModtag(Request $request, MessageHelper $messageHelper): Response
     {
         try {
-            $message = $request->getContent();
+            if ('POST' === $request->getMethod()) {
+                $message = $request->getContent();
 
-            $messageHelper->dispatch(
-                MessageHelper::MESSAGE_TYPE_POST_STATUS_BESKED_MODTAG,
-                $message,
-                $request->server->get('REQUEST_TIME')
-            );
+                $messageHelper->dispatch(
+                    MessageHelper::MESSAGE_TYPE_POST_STATUS_BESKED_MODTAG,
+                    $message,
+                    $request->server->get('REQUEST_TIME')
+                );
+
+                $this->logger->debug(sprintf('Beskedfordeler: %s', 'message dispatched'), [
+                    'message' => $message,
+                ]);
+            } else {
+                $this->logger->debug(sprintf('Beskedfordeler: %s', $request->getMethod()));
+            }
         } catch (\Throwable $throwable) {
-            $this->logger->error($throwable->getMessage(), [
+            $this->logger->error(sprintf('Beskedfordeler: %s', $throwable->getMessage()), [
                 'throwable' => $throwable,
             ]);
 
